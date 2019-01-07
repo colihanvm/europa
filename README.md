@@ -2,7 +2,7 @@
 CS 1666 - Group game design project 
 
 ## HOW TO PLAY
-Click executable "bandcamp" appropriate to computer with "res" and "music" on the same level (as it is in the file currently).
+Click executable "bandcamp" in the "Executable" folder. Executable needs "res" and "music" on the same level as well as the provided .ddls (as it is in the file currently).
 
 ## Controls:
 Move: WASD / Arrow Keys
@@ -32,9 +32,9 @@ For our advanced featues, we will explore the topics of Advanced AI, advanced ph
 - Christian Brill
 
 
-##### Physics Engine 
-- Kyle Hartenstein (Group Lead)
-- Tyler Thompson
+##### Physics Engine
+- Tyler Thompson (Group Lead) 
+- Kyle Hartenstein
 - Brad Munson
 
 ##### Procedural Generation 
