@@ -1,4 +1,5 @@
 #include "include/Artifact_Descriptor.h"
+
 std::vector<std::string> historical_figures;
 
 Artifact_Descriptor::Artifact_Descriptor() {

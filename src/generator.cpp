@@ -59,8 +59,7 @@ bool Generator::checkOverlap(SDL_Rect room) {
             break;
         }
     }
-    if(collides) //std::cout << "Collides." << std::endl;
-        return collides;
+    return collides;
 }
 
 //place a room using rectangle packing

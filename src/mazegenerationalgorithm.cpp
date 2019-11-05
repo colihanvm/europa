@@ -101,6 +101,7 @@ std::pair<int,int> MGA::update(std::pair<int,int> pair, int dir){
         case 4: //left
             return std::pair <int, int> (pair.first, pair.second-1);
     }
+    return std::pair <int, int> (pair.first, pair.second);
 }
 
 std::string MGA::printDir(int dir){
@@ -117,6 +118,7 @@ std::string MGA::printDir(int dir){
         case 4: //left
             return "left";
     }
+    return nullptr;
 }
 
 

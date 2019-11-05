@@ -82,7 +82,7 @@ void TestTransition_1::placeDoors(SDL_Renderer* renderer) {
                 map[r][c]->setBlocking(true);
                 Door* d = new Door(c, r, horz);
                 d->init(renderer);
-                objectList["door"+doorCount] = d;
+                objectList["door" + std::to_string(doorCount)] = d;
                 doorCount++;
             }
         }

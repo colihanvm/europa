@@ -3,7 +3,6 @@
  * The class that handles artifact operations
  */
 #include "include/artifact.h"
-#include <iostream>
 
 Artifact::Artifact(std::string name_, std::string owner_, std::string description_, SDL_Texture* image_, int r_, int g_, int b_) {
     name = name_;

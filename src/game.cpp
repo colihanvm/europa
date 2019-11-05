@@ -4,8 +4,6 @@
  */
 
 #include "include/game.h"
-#include "include/credits.h"
-#include "include/GSM.h"
 
 //int SCREEN_WIDTH = 800;
 //int SCREEN_HEIGHT = 600;

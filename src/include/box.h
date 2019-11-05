@@ -1,12 +1,28 @@
 #ifndef BANDCAMP_BOX_H_
 #define BANDCAMP_BOX_H_
 
+// forward declarations
+/*
+ #include <SDL.h>
+ int uniqueArtifactNumber;
+ vector<Artifact*> artifactList; //The list of unique artifacts in the game.
+ int* inventory[9][5];
+ */
+/*class PauseMenu {
+     std::vector<Artifact*> artifactList; //The list of unique artifacts in the game.
+     int inventory[9][5];
+     int uniqueArtifactNumber; //How many unique artifacts are in the game?
+};*/
+
+
+// included dependencies
 #include "game.h"
 #include "utils.h"
 #include "spritesheet.h"
 #include "animation.h"
 #include "object.h"
 
+// class declarations
 class Box : public Object
 {
 private:

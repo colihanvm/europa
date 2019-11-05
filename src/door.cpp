@@ -13,6 +13,7 @@
  int toggleButton; //What state is the "Door open button"? 0 - not pressed  1 - pressed 1st frame 2 - held
  int instanceNumber = 0;
  int state = 0; //State of the Door
+ */
  /*
 	0 - Closed
 	1 - Sliding Open

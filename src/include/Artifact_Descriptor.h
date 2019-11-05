@@ -1,3 +1,7 @@
+#ifndef BANDCAMP_ARTIFACT_DESCRIPTOR_H_
+#define BANDCAMP_ARTIFACT_DESCRIPTOR_H_
+
+
 #include <iostream>
 #include <string>
 #include <time.h>
@@ -15,3 +19,5 @@ public:
     std::string get_first_descriptor();
     std::string get_second_descriptor();
 };
+
+#endif // BANDCAMP_ARTIFACT_DESCRIPTOR_H_

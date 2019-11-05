@@ -14,6 +14,8 @@
  int instanceNumber = 0;
  int state = 0; //State of the Box
  int x_pos, y_pos; //X and Y according to the TILEMAP
+ */
+
  /*
 	0 - Closed
 	1 - Opening
@@ -177,11 +179,17 @@ bool Box::checkCanOpen(Player*& playerObj){
     int y = playerRect->y + int(playerRect->h/2);
     
     return (	//Top and Bottom Collision
+            (
             (y <= boxRect.y+(TILE_SIZE*2) && y >= boxRect.y-TILE_SIZE)
-            && (x <= boxRect.x+TILE_SIZE && x >= boxRect.x)
+            &&
+            (x <= boxRect.x+TILE_SIZE && x >= boxRect.x)
+            )
             || //Left and Right Collision
+            (
             (x <= boxRect.x+(TILE_SIZE*2) && x >= boxRect.x-TILE_SIZE)
-            && (y <= boxRect.y+TILE_SIZE && y >= boxRect.y)
+            &&
+            (y <= boxRect.y+TILE_SIZE && y >= boxRect.y)
+            )
             );
 }
 
@@ -209,7 +217,11 @@ SDL_Renderer* Box::draw(SDL_Renderer *renderer, SDL_Rect cam){
         *dest1 = artifactImgRect;
         dest1->x -= cam.x;
         dest1->y -= cam.y;
-        SDL_SetTextureColorMod(artifactList.at(instanceNumber % uniqueArtifactNumber)->getImage(), artifactList.at(instanceNumber % uniqueArtifactNumber)->getR(), artifactList.at(instanceNumber % uniqueArtifactNumber)->getG(), artifactList.at(instanceNumber % uniqueArtifactNumber)->getB());
+        SDL_SetTextureColorMod(
+                               artifactList.at(instanceNumber % uniqueArtifactNumber)->getImage(),
+                               artifactList.at(instanceNumber % uniqueArtifactNumber)->getR(),
+                               artifactList.at(instanceNumber % uniqueArtifactNumber)->getG(),
+                               artifactList.at(instanceNumber % uniqueArtifactNumber)->getB());
         SDL_RenderCopy(renderer, artifactImg, NULL, dest1);
         SDL_RenderCopy(renderer, sheet.getTexture(), sheet.get(0,3), dest);
     }
