@@ -1,14 +1,10 @@
 /* Team Bandcamp
- * Class function:
- *
+ * Class function: Generic UI Button
+ * Framework for a basic object oriented button. In the future, this may be inheritable so that different types
+ * of buttons can be made, or more flexible parameters will be added allowing for different images and effects to be loaded
  */
 
 #include "include/button.h"
-#include "include/game.h"
-#include "include/GSM.h"
-
-//Framework for a basic object oriented button. In the future, this may be inheritable so that different types
-//of buttons can be made, or more flexible parameters will be added allowing for different images and effects to be loaded
 
 SDL_Rect rectangle = {0, 0, 0, 0}; //area of the button
 char* label = nullptr; //Text to be displayed by the button
