@@ -234,31 +234,22 @@ void RandomMap::update(Uint32 ticks){
     waitTicks = (waitTicks+1)%10;
 }
 
-// ADD COMMENTS
-
-/*
- // based off of movePickup
- void RandomMap::cloneOoze(SDL_Renderer* reference) {
-	
- <<<<<<< HEAD
-	/*if(collision::checkCol(OozeBox, leftWall)
- || collision::checkCol(OozeBox, rightWall)
- || collision::checkCol(OozeBox, upperWall)
- || collision::checkCol(OozeBox, centerPillar))
-	{
- moveOoze(reference);
-	}
- =======
- >>>>>>> master
-	Room oozeRoom = *rooms[rand()%(rooms.size())];
-	Ooze *newO = new Ooze(&oozeRoom, &tilemap);
-	objectList[newO->getInstanceName()] = newO;
-	newO->init(reference);
-	spawnOoze = false; //don't need a new pickup; one was just made
- }*/
-
 // based off of movePickup
 void RandomMap::cloneOoze(SDL_Renderer* reference) {
+    
+    // ADD COMMENTS
+    
+    /*
+     // based off of movePickup
+     void RandomMap::cloneOoze(SDL_Renderer* reference) {
+     
+     Room oozeRoom = *rooms[rand()%(rooms.size())];
+     Ooze *newO = new Ooze(&oozeRoom, &tilemap);
+     objectList[newO->getInstanceName()] = newO;
+     newO->init(reference);
+     spawnOoze = false; //don't need a new pickup; one was just made
+     }*/
+    
     /*
      std::unordered_map<std::string, Object*>::iterator it = objectList.begin();
      while(it != objectList.end()){
@@ -354,7 +345,7 @@ void RandomMap::placeDoors(SDL_Renderer* renderer) {
                 //map[r][c]->setBlocking(true);
                 Door* d = new Door(c, r, horz);
                 d->init(renderer);
-                objectList["door"+doorCount] = d;
+                objectList["door"+std::to_string(doorCount)] = d;
                 doorCount++;
                 for(Room* room : rooms) {
                     if(room->contains(d->getRect())) {

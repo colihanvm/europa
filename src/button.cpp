@@ -3,9 +3,6 @@
  *
  */
 
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_ttf.h>
 #include "include/button.h"
 #include "include/game.h"
 #include "include/GSM.h"
@@ -29,7 +26,7 @@ const int label_offset = 15;
 TTF_Font *font = nullptr;
 
 //
-Button::Button(char* l, SDL_Rect r) { //Constructs the button. For now, it is a simply a text label, a rectangle, and a color.
+Button::Button(std::string l, SDL_Rect r) { //Constructs the button. For now, it is a simply a text label, a rectangle, and a color.
     label = l;
     buttonNumber = 0;
     rectangle = r;
@@ -46,7 +43,7 @@ void Button::init(SDL_Renderer *renderer) {
     font = TTF_OpenFont("res/OpenSans-Regular.ttf", 32); //Opens a font file
     if(font == NULL) std::cout << "Error loading text!" << std::endl;
     
-    message = TTF_RenderText_Solid(font, label, text_color); //Writes text to surface
+    message = TTF_RenderText_Solid(font, label.c_str(), text_color); //Writes text to surface
     message_texture = SDL_CreateTextureFromSurface(renderer, message); //Renders the surface as a texture on video memory
     
     if(message_texture == NULL) {

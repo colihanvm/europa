@@ -5,13 +5,14 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <string>
 
 
 class Button : public Object
 {
 private:
     SDL_Rect rectangle;
-    char* label;
+    std::string label;
     Uint8 unpressed;
     Uint8 pressed;
     SDL_Color text_color;
@@ -25,7 +26,7 @@ private:
     
 public:
     int buttonNumber;
-    Button(char * l, SDL_Rect r);
+    Button(std::string l, SDL_Rect r);
     void init(SDL_Renderer* renderer);
     void press();
     void unpress();
