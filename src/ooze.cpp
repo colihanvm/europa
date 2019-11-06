@@ -1,5 +1,5 @@
 #include "include/ooze.h"
-#include "include/player.h"
+//#include "include/player.h"
 
 //initialize static member variables
 int Ooze::totalOoze = 0;

@@ -1,3 +1,8 @@
+/* Team Bandcamp
+ * Class function: Abstract class for  
+ *
+ */
+
 #ifndef BANDCAMP_OBJECT_H_
 #define BANDCAMP_OBJECT_H_
 

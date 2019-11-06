@@ -5,6 +5,8 @@
 
 #include "include/warptile.h"
 #include "include/fadeobj.h"
+#include "include/player.h"
+#include "include/GSM.h"
 
 static int totalInstance = 0; //How many instances of the object exist?
 
@@ -96,6 +98,7 @@ void WarpTile::update(std::unordered_map<std::string, Object*> &objectList, std:
             }
             else
                 GSM::currentScreen = destScreen;
+                //TODO:HEADER
         }
     }
 }

@@ -1,6 +1,11 @@
 #ifndef OOZE_H_
 #define OOZE_H_
 
+// Forward Declarations
+class Player;
+class Pickup;
+
+// Included Dependencies
 #include <SDL.h>
 #include <unordered_map>
 #include <vector>
@@ -22,8 +27,7 @@
 #include "room.h"
 #include "projectile.h"
 
-class Pickup;
-
+//Variable Declarations
 enum OozeState { // is public
     HANGRY, //temp state
     ROAMING,
@@ -37,6 +41,7 @@ enum OozeState { // is public
     ROOMENTER
 };
 
+// Clas Declaration
 class Ooze : public Object {
     
     struct Stats {

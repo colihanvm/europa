@@ -10,7 +10,9 @@
 #include <iostream>
 
 #include "object.h"
-#include "game.h"
+//#include "game.h"
+#include "global.h"
+
 
 class FadeObj : public Object
 {

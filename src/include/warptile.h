@@ -1,13 +1,20 @@
 #ifndef BANDCAMP_WARPTILE_H_
 #define BANDCAMP_WARPTILE_H_
 
+// Forward Declarations
+class GSM;
+
+// Included Dependencies
 #include <vector>
 #include <unordered_map>
 
-#include "game.h"
+//#include "game.h"
 #include "utils.h"
 #include "object.h"
+#include "spritesheet.h"
+#include "global.h"
 
+// Class Declarations
 class WarpTile : public Object
 {
 private:

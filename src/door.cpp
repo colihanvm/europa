@@ -3,6 +3,7 @@
  * The class that handles door operations
  */
 #include "include/door.h"
+#include "include/player.h" //TODO:HEADER
 
 /*
  SpriteSheet sheet;
@@ -81,7 +82,7 @@ void Door::setSpriteSheet(SDL_Texture* _sheet, int _cols, int _rows) {
 }
 
 void Door::update(std::unordered_map<std::string, Object*> &objectList, std::vector<std::vector<Tile*>> &grid, Uint32 ticks){
-    Player * p;
+    Player::Player * p;
     
     anim->update(ticks);
     

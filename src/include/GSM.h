@@ -7,11 +7,12 @@
 #include <string>
 #include <vector>
 #include <SDL_image.h>
+
 #include "screen.h"
 #include "menu.h"
 #include "randommap.h"
 
-
+#include "credits.h"
 #include "testtransition_1.h"
 
 class GSM {

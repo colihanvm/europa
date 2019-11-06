@@ -4,15 +4,13 @@
  */
 
 #include "include/GSM.h"
-#include "include/credits.h"
-#include "include/randommap.h"
-#include "include/menu.h"
+//#include "include/randommap.h"
+//#include "include/menu.h"
 
 #include "include/PauseMenu.h"
 #include "include/death.h"
 
 
-int GSM::currentScreen = 0;
 RandomMap randomMap;
 TestTransition_1 testTransitionScreen;
 PauseMenu pauseMenu;
@@ -20,9 +18,11 @@ Death deathScreen;
 bool pause;	//Is the game paused
 int tempScreen; //What was the room before you paused?
 
+int GSM::currentScreen = 0;	// Static variable indicating current screen
+
+
 // Game state manager
 GSM::GSM(){
-    GSM::currentScreen = 0;	// Should describe this here
     
     //Init Screens
     //They all get passed the pointer to the
@@ -54,35 +54,35 @@ void GSM::init(SDL_Renderer* reference){
     //As a reference for their init method.
     rendererReference = reference;
     
-    roomList[GSM::currentScreen]->init(reference);
+    roomList[currentScreen]->init(reference);
     pauseMenu.init(rendererReference); //So that the artifact list can be generated.
     running = true;
 }
 
 // Update the GSM state
 void GSM::update(Uint32 ticks){
-    previousScreen = GSM::currentScreen;
+    previousScreen = currentScreen;
     
     if(pause)
         pauseMenu.update(ticks);
     else
-        roomList[GSM::currentScreen]->update(ticks);
+        roomList[currentScreen]->update(ticks);
     
     //Checking if we changed screens this loop
     //If so, then call the init to the new screen.
-    if(previousScreen != GSM::currentScreen)
+    if(previousScreen != currentScreen)
     {
-        if(GSM::currentScreen == -1){ //The Pause Command
+        if(currentScreen == -1){ //The Pause Command
             pause = true;
             tempScreen = previousScreen;
             pauseMenu.init(rendererReference);
         }
-        else if(GSM::currentScreen == -2){ //The Unpause Command
+        else if(currentScreen == -2){ //The Unpause Command
             pause = false;
-            GSM::currentScreen = tempScreen;
+            currentScreen = tempScreen;
         }
         else
-            roomList[GSM::currentScreen]->init(rendererReference);
+            roomList[currentScreen]->init(rendererReference);
     }
 }
 
@@ -94,7 +94,7 @@ SDL_Renderer* GSM::draw(SDL_Renderer *renderer){
         renderer = pauseMenu.draw(renderer); //Draw the pause menu
     }
     else
-        renderer = roomList[GSM::currentScreen]->draw(renderer);
+        renderer = roomList[currentScreen]->draw(renderer);
     
     return renderer;	
 }
@@ -104,5 +104,5 @@ void GSM::input(const Uint8* keystate){
     if(pause)
         pauseMenu.input(keystate);
     else
-        roomList[GSM::currentScreen]->input(keystate);
+        roomList[currentScreen]->input(keystate);
 }

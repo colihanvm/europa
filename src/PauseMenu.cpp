@@ -367,6 +367,7 @@ SDL_Renderer* PauseMenu::drawText(SDL_Renderer *renderer, int x, int y, int x_le
         
         pch = strtok(NULL, " ");
     }
+    return renderer;
 }
 
 void PauseMenu::generateArtifactsList()

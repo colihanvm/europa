@@ -16,12 +16,13 @@ bool run_in_credits = false;
 bool music_debug = true;
 //used to change through tracks of the song
 int track_counter = 0;
+
 //Starts new game
 Game::Game() {
     gWindow = nullptr;
     gRenderer = nullptr;
     running = false;
-    GSM * gsm;
+    GSM::GSM * gsm;
 }
 
 /* Called from Main
@@ -78,7 +79,7 @@ bool Game::init() {
     
     //Start the GSM
     
-    gsm = new GSM();
+    gsm = new GSM::GSM();
     
     gsm->init(gRenderer);
     

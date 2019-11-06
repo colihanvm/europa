@@ -1,15 +1,24 @@
 #ifndef BANDCAMP_DOOR_H_
 #define BANDCAMP_DOOR_H_
 
+
+
 #include <vector>
 #include <unordered_map>
+#include <sstream>
 
-#include "game.h"
+//#include "game.h"
 #include "utils.h"
 #include "spritesheet.h"
 #include "animation.h"
 #include "object.h"
+#include "global.h"
 
+// Forward Declaration
+class Room;
+class Player; //TODO:HEADER
+
+// Class Declaration
 class Door : public Object
 {
 private:
