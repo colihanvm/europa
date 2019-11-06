@@ -9,8 +9,8 @@
 
 #include "include/spritesheet.h"
 #include "include/GSM.h"
-#include "include/PauseMenu.h"
-#include "include/Artifact_Descriptor.h"
+#include "include/pausemenu.h"
+#include "include/artifact_descriptor.h"
 
 std::vector<SDL_Texture*> menuGraphics;
 std::vector<SDL_Texture*> rareArtifactImgs;

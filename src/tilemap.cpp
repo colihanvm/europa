@@ -1,7 +1,7 @@
 #include <sstream>
 #include <iostream>
 #include "include/tilemap.h"
-#include "include/mazegenerationalgorithm.h"
+#include "include/maze_generation_algorithm.h"
 
 //constants
 constexpr int MAX_ROOM_SIZE = 15;

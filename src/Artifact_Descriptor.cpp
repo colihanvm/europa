@@ -1,4 +1,4 @@
-#include "include/Artifact_Descriptor.h"
+#include "include/artifact_descriptor.h"
 
 std::vector<std::string> historical_figures;
 

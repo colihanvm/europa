@@ -3,7 +3,7 @@
  * The class that handles box operations
  */
 #include "include/box.h"
-#include "include/PauseMenu.h"
+#include "include/pausemenu.h"
 
 /*
  SpriteSheet sheet;

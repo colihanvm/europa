@@ -1,5 +1,5 @@
-#ifndef BANDCAMP_MAZEGENERATIONALGORITHM_H_
-#define BANDCAMP_MAZEGENERATIONALGORITHM_H_
+#ifndef BANDCAMP_MAZE_GENERATION_ALGORITHM_H_
+#define BANDCAMP_MAZE_GENERATION_ALGORITHM_H_
 
 #include <iostream>
 #include <vector>
@@ -22,4 +22,4 @@ public:
     void genMazeDFS(std::pair <int, int> currSpace, int back);
     std::vector<std::vector<int>> getMaze();
 };
-#endif //BANDCAMP_MAZEGENERATIONALGORITHM_H_
+#endif //BANDCAMP_MAZE_GENERATION_ALGORITHM_H_

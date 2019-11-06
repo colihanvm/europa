@@ -1,4 +1,4 @@
-#include "include/mazegenerationalgorithm.h"
+#include "include/maze_generation_algorithm.h"
 using namespace std;
 
 constexpr int WALL_TILE = 2;
