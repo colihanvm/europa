@@ -4,12 +4,6 @@
  */
 
 #include "include/GSM.h"
-//#include "include/randommap.h"
-//#include "include/menu.h"
-
-#include "include/PauseMenu.h"
-#include "include/death.h"
-
 
 RandomMap randomMap;
 TestTransition_1 testTransitionScreen;

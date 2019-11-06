@@ -11,7 +11,8 @@
 #include "screen.h"
 #include "menu.h"
 #include "randommap.h"
-
+#include "death.h"
+#include "PauseMenu.h"
 #include "credits.h"
 #include "testtransition_1.h"
 
