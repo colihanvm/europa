@@ -15,7 +15,7 @@
 #include "include/collision.h"
 #include "include/pickup.h"
 #include "include/tilemap.h"
-#include "include/box.h"
+#include "include/chest.h"
 
 //constexpr int UPDATE_MAX = 100;
 constexpr int CAM_WIDTH = 800;
@@ -372,7 +372,7 @@ void RandomMap::placeChests(SDL_Renderer* renderer) {
     for(int r=0;r<map.size();r++) {
         for(int c=0;c<map[0].size();c++) {
             if(map[r][c]->isChest()) { 
-                Box* b = new Box(c, r);
+                Chest* b = new Chest(c, r);
                 b->init(renderer);
                 objectList[b->getInstanceName()] = b;
             }

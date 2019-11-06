@@ -1,18 +1,18 @@
 /* Team Bandcamp
  * Class function:
- * The class that handles box operations
+ * The class that handles Chest operations
  */
-#include "include/box.h"
+#include "include/chest.h"
 #include "include/pausemenu.h"
 
 /*
  SpriteSheet sheet;
  Animation* anim;
- SDL_Rect boxRect; //The Collision Box
+ SDL_Rect chestRect; //The Collision Box
  static int totalInstance = 0;//How many instances of the object exist?
- int toggleButton; //What state is the "Box open button"? 0 - not pressed  1 - pressed 1st frame 2 - held
+ int toggleButton; //What state is the "Chest open button"? 0 - not pressed  1 - pressed 1st frame 2 - held
  int instanceNumber = 0;
- int state = 0; //State of the Box
+ int state = 0; //State of the Chest
  int x_pos, y_pos; //X and Y according to the TILEMAP
  */
 
@@ -26,21 +26,21 @@ static int totalInstance = 0; //How many instances of the object exist?
 
 //Constructor
 //X and Y are in terms of the TILE MAP
-Box::Box(int x, int y) {
+Chest::Chest(int x, int y) {
     x_pos = x;
     y_pos = y;
-    boxRect = {x*TILE_SIZE, y*TILE_SIZE, TILE_SIZE, TILE_SIZE};
+    chestRect = {x*TILE_SIZE, y*TILE_SIZE, TILE_SIZE, TILE_SIZE};
     artifactImgRect = {x*TILE_SIZE, y*TILE_SIZE+3, TILE_SIZE, TILE_SIZE};
     totalInstance++; //Increase instance Number
     instanceNumber = totalInstance;
 }
 
 //Deconstructor
-Box::~Box() {}
+Chest::~Chest() {}
 
-Box::Box(){}
+Chest::Chest(){}
 
-void Box::input(const Uint8* keystate)
+void Chest::input(const Uint8* keystate)
 {
     if(keystate[SDL_SCANCODE_Z])
     {
@@ -53,31 +53,31 @@ void Box::input(const Uint8* keystate)
         toggleButton = 0;  //Not pressed
 }
 
-std::string Box::getInstanceName(){
+std::string Chest::getInstanceName(){
     std::ostringstream ss;
     ss << instanceNumber;
-    return "Box-"+ss.str();
+    return "Chest-"+ss.str();
 }
 
-void Box::init(SDL_Renderer* gRenderer){
-    //set up Box animations
-    setSpriteSheet(utils::loadTexture(gRenderer, "res/box.png"), 6, 2);
+void Chest::init(SDL_Renderer* gRenderer){
+    //set up Chest animations
+    setSpriteSheet(utils::loadTexture(gRenderer, "res/chest.png"), 6, 2);
     addAnimation("closed", Animation(sheet.get(0,0)));
     addAnimation("damaged", Animation(sheet.get(0,1)));
     addAnimation("open", Animation(sheet.get(0,2)));
     addAnimation("opening", Animation(sheet.getRow(1)));
     addAnimation("broken", Animation(sheet.get(0,1)));
-    setAnimation("closed");	//The box starts off closed
+    setAnimation("closed");	//The chest starts off closed
     
     artifactImg = artifactList.at(instanceNumber % uniqueArtifactNumber)->getImage();
 }
 
-void Box::setSpriteSheet(SDL_Texture* _sheet, int _cols, int _rows) {
+void Chest::setSpriteSheet(SDL_Texture* _sheet, int _cols, int _rows) {
     sheet = SpriteSheet(_sheet);
     sheet.setClips(_cols, _rows, 32, 32);
 }
 
-void Box::update(std::unordered_map<std::string, Object*> &objectList, std::vector<std::vector<Tile*>> &grid, Uint32 ticks){
+void Chest::update(std::unordered_map<std::string, Object*> &objectList, std::vector<std::vector<Tile*>> &grid, Uint32 ticks){
     Player * p;
     
     anim->update(ticks);
@@ -173,42 +173,42 @@ void Box::update(std::unordered_map<std::string, Object*> &objectList, std::vect
     
 }
 
-bool Box::checkCanOpen(Player*& playerObj){
+bool Chest::checkCanOpen(Player*& playerObj){
     SDL_Rect * playerRect = playerObj->getRect();
     int x = playerRect->x + int(playerRect->w/2);
     int y = playerRect->y + int(playerRect->h/2);
     
     return (	//Top and Bottom Collision
             (
-            (y <= boxRect.y+(TILE_SIZE*2) && y >= boxRect.y-TILE_SIZE)
+            (y <= chestRect.y+(TILE_SIZE*2) && y >= chestRect.y-TILE_SIZE)
             &&
-            (x <= boxRect.x+TILE_SIZE && x >= boxRect.x)
+            (x <= chestRect.x+TILE_SIZE && x >= chestRect.x)
             )
             || //Left and Right Collision
             (
-            (x <= boxRect.x+(TILE_SIZE*2) && x >= boxRect.x-TILE_SIZE)
+            (x <= chestRect.x+(TILE_SIZE*2) && x >= chestRect.x-TILE_SIZE)
             &&
-            (y <= boxRect.y+TILE_SIZE && y >= boxRect.y)
+            (y <= chestRect.y+TILE_SIZE && y >= chestRect.y)
             )
             );
 }
 
-void Box::addAnimation(std::string tag, Animation anim) {
+void Chest::addAnimation(std::string tag, Animation anim) {
     anims[tag] = anim;
 }
 
-Animation* Box::getAnimation(std::string tag) {
+Animation* Chest::getAnimation(std::string tag) {
     return &anims[tag];
 }
 
-void Box::setAnimation(std::string tag) {
+void Chest::setAnimation(std::string tag) {
     anim = &anims[tag];
     anim->reset();
 }
 
-SDL_Renderer* Box::draw(SDL_Renderer *renderer, SDL_Rect cam){
+SDL_Renderer* Chest::draw(SDL_Renderer *renderer, SDL_Rect cam){
     SDL_Rect* dest = new SDL_Rect;
-    *dest = boxRect;
+    *dest = chestRect;
     dest->x -= cam.x;
     dest->y -= cam.y;
     SDL_RenderCopy(renderer, sheet.getTexture(), anim->getFrame(), dest);
@@ -229,12 +229,12 @@ SDL_Renderer* Box::draw(SDL_Renderer *renderer, SDL_Rect cam){
     return renderer;
 }
 
-bool Box::bulletCollision(std::unordered_map<std::string, Object*> &objectList){
+bool Chest::bulletCollision(std::unordered_map<std::string, Object*> &objectList){
     std::unordered_map<std::string, Object*>::iterator it;
     for(it = objectList.begin(); it != objectList.end(); it++) {
         if(it->second->getInstanceName().find("proj") != -1) {
             Projectile* temp = (Projectile*)it->second;
-            if (collision::checkCol(boxRect, *(temp->getRect()))) {
+            if (collision::checkCol(chestRect, *(temp->getRect()))) {
                 temp->projUsed = true; //Delete bullet
                 return true;
             }
@@ -245,6 +245,6 @@ bool Box::bulletCollision(std::unordered_map<std::string, Object*> &objectList){
 }
 
 
-SDL_Rect* Box::getRect(){return &boxRect;}
+SDL_Rect* Chest::getRect(){return &chestRect;}
 
-bool Box::isUsed(){return false;}
+bool Chest::isUsed(){return false;}

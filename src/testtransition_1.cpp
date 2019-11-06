@@ -12,7 +12,7 @@
 #include "include/GSM.h"
 #include "include/circle.h"
 #include "include/collision.h"
-#include "include/box.h"
+#include "include/chest.h"
 
 constexpr int UPDATE_MAX = 100;
 constexpr int CAM_WIDTH = 800;

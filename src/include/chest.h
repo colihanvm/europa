@@ -1,5 +1,5 @@
-#ifndef BANDCAMP_BOX_H_
-#define BANDCAMP_BOX_H_
+#ifndef BANDCAMP_CHEST_H_
+#define BANDCAMP_CHEST_H_
 
 // forward declarations
 /*
@@ -23,19 +23,19 @@
 #include "object.h"
 
 // class declarations
-class Box : public Object
+class Chest : public Object
 {
 private:
     SpriteSheet sheet;
     SDL_Texture* artifactImg;
     std::unordered_map<std::string, Animation> anims;
     Animation* anim;
-    SDL_Rect boxRect; //The Collision Box
+    SDL_Rect chestRect; //The Collision Box
     SDL_Rect artifactImgRect;
-    int toggleButton; //What state is the "Box open button"? 0 - not pressed  1 - pressed 1st frame 2 - held
+    int toggleButton; //What state is the "Chest open button"? 0 - not pressed  1 - pressed 1st frame 2 - held
     int instanceNumber = 0;
     int x_pos, y_pos; //X and Y according to the TILEMAP
-    int state = 0; //State of the Box
+    int state = 0; //State of the Chest
     int frameTicks; //For animations
     
 public:
@@ -45,9 +45,9 @@ public:
     void update(std::unordered_map<std::string, Object*> &objectList, std::vector<std::vector<Tile*>> &grid, Uint32 ticks);
     std::string getInstanceName();
     SDL_Renderer* draw(SDL_Renderer *renderer, SDL_Rect cam);
-    Box(int x, int y);
-    ~Box();
-    Box();
+    Chest(int x, int y);
+    ~Chest();
+    Chest();
     void checkOverlap(std::unordered_map<std::string, Object*> *objectList);
     void setSpriteSheet(SDL_Texture* _sheet, int _cols, int _rows);
     bool checkCanOpen(Player*& playerObj);
@@ -59,4 +59,4 @@ public:
     SDL_Rect* getRect();
 };
 
-#endif  //  BANDCAMP_BOX_H_
+#endif  //  BANDCAMP_CHEST_H_
