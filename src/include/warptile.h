@@ -3,6 +3,7 @@
 
 // Forward Declarations
 class GSM;
+class player;
 
 // Included Dependencies
 #include <vector>
@@ -12,6 +13,7 @@ class GSM;
 #include "utils.h"
 #include "object.h"
 #include "spritesheet.h"
+#include "fadeobj.h"
 #include "global.h"
 
 // Class Declarations
